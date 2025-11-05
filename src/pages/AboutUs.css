@@ -1,0 +1,66 @@
+/* Enhanced AboutUs page styles */
+.section-padded {
+  padding-block: 5rem;
+}
+
+.aboutus-intro {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+/* Team Section */
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.team-card {
+  border: 2px solid var(--clr-neutral-200);
+  border-radius: var(--br-xl);
+  background: var(--clr-white);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  text-align: center;
+  max-width: 320px;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--clr-gradient-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--clr-primary-300);
+}
+
+.team-card:hover::before {
+  transform: scaleX(1);
+}
+
+.team-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base);
+}
+
+.team-card:hover img {
+  transform: scale(1.05);
+}

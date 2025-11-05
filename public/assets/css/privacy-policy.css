@@ -1,0 +1,84 @@
+/* assets/css/privacy-policy.css */
+
+/* General Policy Page Hero Section (can be reused for terms-of-service) */
+.policy-hero {
+    background: linear-gradient(to right, #795548 0%, #a1887f 100%); /* Brown/earthy gradient */
+    color: var(--clr-white);
+    text-align: center;
+    padding-block: var(--space-xl) var(--space-lg);
+}
+
+.policy-hero .section-title,
+.policy-hero .section-description {
+    color: var(--clr-white);
+}
+
+/* Policy Content Section */
+.policy-content {
+    --flow-space: var(--space-lg);
+}
+
+.text-block {
+    max-width: 900px; /* Max width for readability */
+    margin-inline: auto;
+    line-height: 1.8;
+    color: var(--clr-neutral-600);
+}
+
+.text-block h2 {
+    font-size: var(--fs-h2);
+    color: var(--clr-primary-400);
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-md);
+    text-align: left; /* Align headings to left */
+}
+
+.text-block h3 {
+    font-size: var(--fs-h3);
+    color: var(--clr-neutral-600);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-sm);
+    text-align: left;
+}
+
+.text-block p {
+    margin-bottom: var(--space-sm);
+}
+
+.text-block ul {
+    list-style: disc;
+    margin-left: var(--space-md);
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-sm);
+}
+
+.text-block ul li {
+    margin-bottom: var(--space-xs);
+    font-size: var(--fs-base);
+}
+
+.text-block strong {
+    font-weight: 700;
+    color: var(--clr-primary-500);
+}
+
+.text-block a {
+    color: var(--clr-primary-400);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.text-block a:hover {
+    color: var(--clr-primary-500);
+}
+
+/* Responsive Design for Policy Pages */
+@media (max-width: 48em) { /* Mobile & Smaller Screens */
+    .text-block {
+        padding-inline: var(--space-sm);
+    }
+
+    .text-block h2 {
+        font-size: var(--fs-h3);
+    }
+}

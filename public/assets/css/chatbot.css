@@ -1,0 +1,240 @@
+/* assets/css/chatbot.css */
+
+/* Chatbot Hero Section */
+.chatbot-hero {
+    background: linear-gradient(to right, var(--clr-primary-400) 0%, #6dd5ed 100%);
+    color: var(--clr-white);
+    text-align: center;
+    padding-block: var(--space-xl) var(--space-lg);
+}
+
+.chatbot-hero .section-title,
+.chatbot-hero .section-description {
+    color: var(--clr-white); /* Ensure text is white on dark background */
+}
+
+/* Chatbot Interface Section */
+.chatbot-interface {
+    --flow-space: var(--space-lg); /* Override default flow space for this section */
+}
+
+.chatbot-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for camera and output */
+    gap: var(--space-lg);
+    align-items: flex-start; /* Align items to the top */
+    margin-top: var(--space-lg);
+}
+
+.card {
+    background-color: var(--clr-white);
+    border-radius: var(--br-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-lg);
+    border: 1px solid var(--clr-neutral-300);
+    display: flex;
+    flex-direction: column;
+    --flow-space: var(--space-md); /* Space between card elements */
+    height: 100%; /* Make cards fill their grid cell height */
+}
+
+.card-title {
+    font-size: var(--fs-h3);
+    color: var(--clr-primary-400);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+
+/* Camera Feed Card */
+.camera-feed-card {
+    position: relative;
+}
+
+.video-container {
+    background-color: var(--clr-neutral-600);
+    border-radius: var(--br-sm);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* 4:3 Aspect Ratio (height / width * 100%) */
+    margin-bottom: var(--space-md);
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    transform: scaleX(-1); /* Mirror effect for webcam */
+}
+
+#noCameraMessage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    color: var(--clr-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-md);
+}
+
+#noCameraMessage p {
+    margin-bottom: var(--space-sm);
+}
+
+.camera-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: auto; /* Push controls to the bottom of the card */
+}
+
+#cameraSelect {
+    padding: 0.75rem 1rem;
+    border-radius: var(--br-sm);
+    border: 1px solid var(--clr-neutral-300);
+    background-color: var(--clr-neutral-100);
+    color: var(--clr-neutral-600);
+    font-size: var(--fs-base);
+    cursor: pointer;
+    max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+/* Translation Output Card */
+.translation-output-card {
+    justify-content: space-between; /* Push actions to bottom */
+}
+
+.output-display {
+    flex-grow: 1; /* Allow output display to take available space */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevent content from overflowing */
+}
+
+.current-translation {
+    font-size: var(--fs-lg);
+    font-weight: 500;
+    color: var(--clr-primary-400);
+    text-align: center;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--clr-neutral-100);
+    border-radius: var(--br-sm);
+    margin-bottom: var(--space-md);
+    min-height: 2.5em; /* Ensure consistent height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-wrap: break-word; /* Allow long words to break */
+}
+
+.message-history {
+    background-color: var(--clr-neutral-200);
+    border-radius: var(--br-sm);
+    padding: var(--space-sm);
+    flex-grow: 1;
+    overflow-y: auto; /* Enable scrolling for history */
+    display: flex;
+    flex-direction: column-reverse; /* Newest messages at bottom */
+    gap: var(--space-xs);
+    height: 250px; /* Fixed height for scrollable area */
+    border: 1px solid var(--clr-neutral-300);
+}
+
+.message {
+    background-color: var(--clr-white);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--br-sm);
+    box-shadow: var(--shadow-sm);
+    width: fit-content; /* Make message bubbles fit content */
+    max-width: 90%;
+    margin-left: auto; /* Align to right */
+    position: relative;
+}
+
+.message.incoming {
+    background-color: var(--clr-primary-100); /* Lighter blue for incoming */
+    margin-right: auto; /* Align to left */
+}
+
+.message .timestamp {
+    display: block;
+    font-size: var(--fs-xs);
+    color: var(--clr-neutral-800);
+    margin-bottom: var(--space-2xs);
+    text-align: right;
+}
+
+.message.incoming .timestamp {
+    text-align: left;
+}
+
+.message p {
+    font-size: var(--fs-sm);
+    color: var(--clr-neutral-600);
+    margin-bottom: 0; /* Remove default paragraph margin */
+}
+
+.output-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
+}
+
+/* Utility Class */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design for Chatbot Page */
+
+/* Tablet & Smaller Screens (max-width: 1024px or 64em) */
+@media (max-width: 64em) {
+    .chatbot-layout {
+        grid-template-columns: 1fr; /* Stack columns vertically */
+    }
+
+    .camera-feed-card,
+    .translation-output-card {
+        max-width: 600px; /* Limit card width */
+        margin-inline: auto; /* Center cards */
+    }
+}
+
+/* Mobile & Smaller Screens (max-width: 768px or 48em) */
+@media (max-width: 48em) {
+    .video-container {
+        padding-top: 66%; /* Adjust aspect ratio for better mobile viewing (e.g., 3:2) */
+    }
+
+    .message-history {
+        height: 200px; /* Make history shorter on small screens */
+    }
+}
+
+/* Smallest Mobile Screens (max-width: 480px or 30em) */
+@media (max-width: 30em) {
+    .camera-controls,
+    .output-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .camera-controls .btn,
+    .output-actions .btn,
+    #cameraSelect {
+        width: 100%;
+        max-width: 280px;
+    }
+}

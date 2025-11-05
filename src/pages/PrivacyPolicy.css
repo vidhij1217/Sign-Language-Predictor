@@ -1,0 +1,10 @@
+/* PrivacyPolicy page styles (Bootstrap-friendly) */
+.section-padded {
+    padding-block: 4rem;
+}
+
+.policy-content {
+    max-width: 900px;
+    margin-inline: auto;
+}
+

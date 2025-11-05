@@ -1,0 +1,430 @@
+/* assets/css/main.css */
+
+/* Universal Styles & Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Color Palette (Modern, clean, and accessible) */
+    --clr-primary-400: #007bff;   /* Blue */
+    --clr-primary-500: #0056b3;   /* Darker Blue */
+    --clr-accent-400: #28a745;    /* Green */
+    --clr-accent-500: #218838;    /* Darker Green */
+    --clr-neutral-100: #f8f9fa;  /* Light background */
+    --clr-neutral-200: #f1f3f5;  /* Slightly darker light background */
+    --clr-neutral-300: #dee2e6;  /* Border color */
+    --clr-neutral-400: #6c757d;  /* Gray */
+    --clr-neutral-500: #343a40;  /* Dark background for header/footer */
+    --clr-neutral-600: #333;     /* Dark text color */
+    --clr-neutral-700: #555;     /* Medium text color */
+    --clr-neutral-800: #888;     /* Light text color for timestamps etc. */
+    --clr-white: #fff;
+    --clr-red-400: #dc3545;      /* Danger color */
+
+    /* Typography */
+    --ff-primary: 'Roboto', sans-serif, Arial, sans-serif;
+    --fs-base: 1rem; /* 16px */
+    --fs-h1: 3.2rem;
+    --fs-h2: 2.5rem;
+    --fs-h3: 1.5rem;
+    --fs-lg: 1.2rem; /* Large font size for subtitles/descriptions */
+    --fs-sm: 0.9rem; /* Small font size */
+    --fs-xs: 0.75rem; /* Extra small font size */
+
+    /* Spacing (using a modular scale) */
+    --space-2xs: 0.25rem; /* 4px */
+    --space-xs: 0.5rem;   /* 8px */
+    --space-sm: 1rem;     /* 16px */
+    --space-md: 1.5rem;   /* 24px */
+    --space-lg: 3rem;     /* 48px */
+    --space-xl: 5rem;     /* 80px */
+    --space-2xl: 7.5rem;  /* 120px */
+
+    /* Border Radius */
+    --br-sm: 0.25rem;  /* 4px */
+    --br-md: 0.5rem;   /* 8px */
+    --br-lg: 0.75rem;  /* 12px */
+    --br-pill: 9999px; /* For pill-shaped buttons */
+
+    /* Shadow */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+body {
+    font-family: var(--ff-primary);
+    line-height: 1.6;
+    color: var(--clr-neutral-600);
+    background-color: var(--clr-neutral-100);
+    -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit browsers */
+    -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
+    font-size: var(--fs-base); /* Ensure base font size is applied */
+}
+
+/* --- Reusable Layout Components --- */
+
+/* For applying consistent vertical rhythm (spacing between elements) */
+.flow > *:where(:not(:first-child)) {
+    margin-top: var(--flow-space, var(--space-md)); /* Default flow space */
+}
+
+.container {
+    max-width: 1200px;
+    margin-inline: auto; /* Modern way to center block elements horizontally */
+    padding-inline: var(--space-sm); /* Horizontal padding */
+}
+
+/* --- Universal Utility Classes --- */
+
+.section-padded {
+    padding-block: var(--space-xl); /* Vertical padding */
+}
+
+.bg-light {
+    background-color: var(--clr-neutral-200);
+}
+
+.bg-primary-dark {
+    background-color: var(--clr-primary-500);
+    color: var(--clr-white);
+    text-align: center;
+}
+
+.section-title {
+    font-size: var(--fs-h2);
+    text-align: center;
+    margin-bottom: var(--space-md);
+    color: var(--clr-primary-400);
+}
+
+.bg-primary-dark .section-title {
+    color: var(--clr-white);
+}
+
+.section-description {
+    text-align: center;
+    max-width: 800px;
+    margin-inline: auto; /* Center description */
+    margin-bottom: var(--space-lg);
+    font-size: var(--fs-lg);
+    color: var(--clr-neutral-700);
+}
+
+.bg-primary-dark .section-description {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* --- Base Button Styles --- */
+.btn {
+    display: inline-flex; /* Use flex for easy icon alignment if added later */
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem; /* 12px 24px */
+    border-radius: var(--br-sm);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    font-size: var(--fs-base);
+    white-space: nowrap; /* Prevent text wrap */
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Specific Button Variants (will be overridden/extended by page-specific CSS if needed) */
+.btn-primary {
+    background-color: var(--clr-primary-400);
+    color: var(--clr-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-primary-500);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.btn-secondary {
+    background-color: var(--clr-neutral-400);
+    color: var(--clr-white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--clr-neutral-500);
+    box-shadow: 0 4px 8px rgba(108, 117, 125, 0.2);
+}
+
+.btn-tertiary { /* Common for cards/secondary actions */
+    background-color: var(--clr-white);
+    color: var(--clr-primary-400);
+    border: 1px solid var(--clr-primary-400);
+}
+
+.btn-tertiary:hover {
+    background-color: var(--clr-primary-400);
+    color: var(--clr-white);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-cta { /* For prominent Call to Actions */
+    background-color: var(--clr-accent-400);
+    color: var(--clr-white);
+    padding: 1rem 2rem; /* More generous padding */
+    font-size: var(--fs-lg);
+    border-radius: var(--br-pill);
+}
+
+.btn-cta:hover {
+    background-color: var(--clr-accent-500);
+    box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3);
+}
+
+
+/* --- Header & Navigation (Universal) --- */
+.site-header {
+    background-color: var(--clr-neutral-500);
+    color: var(--clr-white);
+    padding-block: var(--space-sm);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--clr-white);
+    text-decoration: none;
+    line-height: 1;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: var(--space-md);
+    margin-left: auto; /* Pushes nav-list to the right */
+}
+
+.nav-link {
+    color: var(--clr-white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding-block: 0.5rem;
+    position: relative;
+    white-space: nowrap;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--clr-primary-400);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none; /* Hidden by default for desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-xs);
+    position: relative;
+    z-index: 200;
+}
+
+.nav-toggle .hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--clr-white);
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    border-radius: 1px;
+}
+
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: var(--clr-white);
+    transition: all 0.3s ease-in-out;
+    border-radius: 1px;
+}
+
+.nav-toggle .hamburger::before {
+    transform: translateY(-8px);
+}
+
+.nav-toggle .hamburger::after {
+    transform: translateY(8px);
+}
+
+/* Hamburger animation (when 'aria-expanded="true"' is added by JS) */
+.nav-toggle[aria-expanded="true"] .hamburger {
+    background: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger::before {
+    transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger::after {
+    transform: rotate(-45deg);
+}
+
+
+/* --- Footer (Universal) --- */
+.site-footer {
+    background-color: var(--clr-neutral-500);
+    color: var(--clr-white);
+    padding-block: var(--space-md);
+    font-size: var(--fs-sm);
+    text-align: center;
+}
+
+.site-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.site-footer p {
+    margin-bottom: 0;
+}
+
+.footer-nav {
+    margin-top: var(--space-xs);
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links li {
+    margin: 0;
+}
+
+.footer-links a {
+    color: var(--clr-white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--clr-primary-400);
+}
+
+
+/* --- Universal Responsive Design (Media Queries) --- */
+
+/* Tablet & Smaller Screens (max-width: 1024px or 64em) */
+@media (max-width: 64em) {
+    :root { /* Adjust typography for smaller screens */
+        --fs-h1: 2.8rem;
+        --fs-h2: 2.2rem;
+        --fs-h3: 1.3rem;
+        --fs-lg: 1.1rem;
+        --space-xl: 4rem; /* 64px */
+    }
+
+    .nav-toggle {
+        display: block; /* Show hamburger icon */
+        order: 1; /* Move toggle to be first in order within flex container */
+    }
+
+    .site-logo {
+        order: 2; /* Move logo next to toggle */
+        flex-grow: 1; /* Allow logo to take available space */
+        text-align: center;
+    }
+
+    .nav-list {
+        display: none; /* Hide navigation list by default */
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--clr-neutral-500);
+        position: absolute; /* Position relative to header */
+        top: 100%; /* Below header */
+        left: 0;
+        box-shadow: var(--shadow-md);
+        padding-block: var(--space-sm);
+        border-top: 1px solid rgba(255,255,255,0.1);
+        z-index: 100; /* Below toggle but above content */
+    }
+
+    /* When navigation is open (JS adds aria-expanded="true" to nav-toggle) */
+    .nav-toggle[aria-expanded="true"] + #primary-navigation {
+        display: flex;
+    }
+
+    .nav-list li {
+        margin: 0;
+        text-align: center;
+    }
+
+    .nav-link {
+        display: block; /* Make links full width for better tapping */
+        padding-block: 0.75rem; /* More vertical padding */
+    }
+}
+
+/* Mobile & Smaller Screens (max-width: 768px or 48em) */
+@media (max-width: 48em) {
+    :root {
+        --fs-h1: 2.2rem;
+        --fs-h2: 1.8rem;
+        --fs-lg: 1rem;
+        --space-lg: 2rem; /* 32px */
+        --space-xl: 3rem; /* 48px */
+    }
+
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: var(--fs-sm);
+    }
+
+    .site-logo {
+        font-size: 1.5rem;
+    }
+
+    .footer-links {
+        flex-direction: column; /* Stack footer links */
+        gap: var(--space-xs);
+    }
+}

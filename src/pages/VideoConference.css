@@ -1,0 +1,53 @@
+/* Enhanced VideoConference page styles */
+.section-padded {
+    padding-block: 5rem;
+}
+
+.call-card .participant-video {
+    width: 100%;
+    border-radius: var(--br-xl);
+    background: linear-gradient(135deg, var(--clr-neutral-800) 0%, var(--clr-neutral-900) 100%);
+    aspect-ratio: 4/3;
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--clr-neutral-300);
+}
+
+.video-container video {
+    border-radius: var(--br-xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.card .btn {
+    transition: all var(--transition-base);
+}
+
+.card .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.card .btn-success {
+    background: var(--clr-gradient-accent);
+    border: none;
+}
+
+.card .btn-danger {
+    background: linear-gradient(135deg, var(--clr-red-500) 0%, var(--clr-red-400) 100%);
+    border: none;
+}
+
+.message-history .message {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+

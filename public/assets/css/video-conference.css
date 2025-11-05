@@ -1,0 +1,272 @@
+/* assets/css/video-conference.css */
+
+/* Video Conference Hero Section */
+.video-hero {
+    background: linear-gradient(to right, #4CAF50 0%, #8bc34a 100%); /* Green gradient */
+    color: var(--clr-white);
+    text-align: center;
+    padding-block: var(--space-xl) var(--space-lg);
+}
+
+.video-hero .section-title,
+.video-hero .section-description {
+    color: var(--clr-white);
+}
+
+/* Video Interface Section */
+.video-interface {
+    --flow-space: var(--space-lg);
+}
+
+.video-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Main video panel wider than remote/chat */
+    gap: var(--space-lg);
+    align-items: flex-start;
+    margin-top: var(--space-lg);
+}
+
+/* Re-use general .card style from main.css */
+
+.main-video-panel,
+.remote-video-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push controls/chat to bottom */
+}
+
+.video-container {
+    background-color: var(--clr-neutral-600);
+    border-radius: var(--br-sm);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (height / width * 100%) */
+    margin-bottom: var(--space-md);
+    flex-grow: 1; /* Allow video container to expand */
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.local-video video {
+    transform: scaleX(-1); /* Mirror effect for local webcam */
+}
+
+#noCameraMessage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    color: var(--clr-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-md);
+}
+
+#noCameraMessage p {
+    margin-bottom: var(--space-sm);
+}
+
+.video-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: auto; /* Pushes controls to the bottom */
+}
+
+.video-controls .btn {
+    min-width: 120px;
+    padding: 0.75rem 1rem;
+    font-size: var(--fs-sm);
+}
+
+.video-controls .btn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    filter: invert(1); /* Make icons white on dark buttons */
+}
+
+.video-controls .btn-red {
+    background-color: var(--clr-red-400);
+    color: var(--clr-white);
+}
+
+.video-controls .btn-red:hover {
+    background-color: #c82333;
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+}
+
+.control-select {
+    padding: 0.75rem 1rem;
+    border-radius: var(--br-sm);
+    border: 1px solid var(--clr-neutral-300);
+    background-color: var(--clr-neutral-100);
+    color: var(--clr-neutral-600);
+    font-size: var(--fs-base);
+    cursor: pointer;
+    max-width: 100%;
+}
+
+/* Remote Videos Grid */
+.remote-videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Flexible grid for remote videos */
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+    max-height: 250px; /* Limit height for scrollable video thumbnails */
+    overflow-y: auto;
+    background-color: var(--clr-neutral-200);
+    padding: var(--space-xs);
+    border-radius: var(--br-sm);
+    border: 1px solid var(--clr-neutral-300);
+}
+
+.remote-videos-grid video {
+    width: 100%;
+    height: auto;
+    border-radius: var(--br-sm);
+    background-color: var(--clr-neutral-500);
+    object-fit: cover;
+    aspect-ratio: 16/9; /* Maintain aspect ratio for remote videos */
+    transform: scaleX(-1); /* Mirror remote videos too for consistency, or remove for actual view */
+}
+
+.video-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--clr-neutral-300);
+    color: var(--clr-neutral-600);
+    border-radius: var(--br-sm);
+    padding: var(--space-sm);
+    text-align: center;
+    height: 100%; /* Fill space */
+    aspect-ratio: 16/9;
+}
+
+.video-placeholder .placeholder-icon {
+    width: 50px;
+    height: 50px;
+    opacity: 0.6;
+    margin-top: var(--space-xs);
+}
+
+/* Chat Area */
+.chat-area {
+    background-color: var(--clr-neutral-100);
+    border-radius: var(--br-md);
+    padding: var(--space-sm);
+    border: 1px solid var(--clr-neutral-300);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow chat to take remaining height */
+}
+
+.chat-title {
+    font-size: var(--fs-h3);
+    color: var(--clr-neutral-600);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+
+.chat-area .message-history {
+    background-color: var(--clr-neutral-200);
+    border-radius: var(--br-sm);
+    padding: var(--space-sm);
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--space-xs);
+    height: 200px; /* Fixed height for chat scroll area */
+    border: 1px solid var(--clr-neutral-300);
+    margin-bottom: var(--space-sm);
+}
+
+.chat-input-group {
+    display: flex;
+    gap: var(--space-xs);
+    margin-top: auto; /* Push input to the bottom */
+}
+
+.chat-input-group input[type="text"] {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: var(--br-sm);
+    font-size: var(--fs-base);
+}
+
+.chat-input-group .btn {
+    padding: 0.75rem 1.2rem;
+    font-size: var(--fs-sm);
+}
+
+/* Utility Class */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design for Video Conference Page */
+
+/* Tablet & Smaller Screens (max-width: 64em / 1024px) */
+@media (max-width: 64em) {
+    .video-layout {
+        grid-template-columns: 1fr; /* Stack panels vertically */
+    }
+
+    .main-video-panel,
+    .remote-video-panel {
+        max-width: 700px; /* Limit width of panels */
+        margin-inline: auto; /* Center panels */
+    }
+}
+
+/* Mobile & Smaller Screens (max-width: 48em / 768px) */
+@media (max-width: 48em) {
+    .main-video-panel .video-container {
+        padding-top: 75%; /* Adjust aspect ratio for better mobile viewing (e.g., 4:3) */
+    }
+
+    .video-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .video-controls .btn,
+    .control-select {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .remote-videos-grid {
+        max-height: 180px; /* Shorter remote video grid */
+    }
+
+    .chat-area .message-history {
+        height: 150px; /* Shorter chat history */
+    }
+}
+
+/* Smallest Mobile Screens (max-width: 30em / 480px) */
+@media (max-width: 30em) {
+    .video-controls .btn {
+        font-size: var(--fs-base);
+        padding: 0.8rem 1.6rem;
+    }
+}

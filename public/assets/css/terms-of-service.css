@@ -1,0 +1,25 @@
+/* assets/css/terms-of-service.css */
+
+/* Reuses the general .policy-hero style from privacy-policy.css */
+/* Reuses the general .policy-content and .text-block styles from privacy-policy.css */
+
+.policy-hero.terms-hero { /* Specific hero background if different from privacy */
+    background: linear-gradient(to right, #4CAF50 0%, #8bc34a 100%); /* Green gradient for Terms */
+}
+
+/* If you want different colors for headings/links in terms-of-service */
+.terms-content .text-block h2 {
+    color: var(--clr-accent-400); /* Example: Use accent green */
+}
+
+.terms-content .text-block strong {
+    color: var(--clr-accent-500);
+}
+
+.terms-content .text-block a {
+    color: var(--clr-accent-400);
+}
+
+.terms-content .text-block a:hover {
+    color: var(--clr-accent-500);
+}

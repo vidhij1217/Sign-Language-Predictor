@@ -1,0 +1,41 @@
+/* Enhanced LearnSigns page styles */
+.section-padded {
+    padding-block: 5rem;
+}
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.lesson-grid .card {
+    transition: all var(--transition-base);
+    border: 2px solid var(--clr-neutral-200);
+}
+
+.lesson-grid .card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--clr-primary-400);
+}
+
+.lesson-grid .card video {
+    border-radius: var(--br-lg);
+    transition: transform var(--transition-base);
+}
+
+.lesson-grid .card:hover video {
+    transform: scale(1.05);
+}
+
+.lesson-grid .btn-outline-primary {
+    transition: all var(--transition-base);
+    border-width: 2px;
+}
+
+.lesson-grid .btn-outline-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+

@@ -1,0 +1,176 @@
+/* assets/css/learn-signs.css */
+
+/* Learn Signs Hero Section */
+.learn-signs-hero {
+    background: linear-gradient(to right, #673ab7 0%, #9575cd 100%); /* Purple gradient */
+    color: var(--clr-white);
+    text-align: center;
+    padding-block: var(--space-xl) var(--space-lg);
+}
+
+.learn-signs-hero .section-title,
+.learn-signs-hero .section-description {
+    color: var(--clr-white);
+}
+
+/* Sign Library Section */
+.sign-library {
+    --flow-space: var(--space-lg);
+}
+
+.library-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+    max-width: 800px;
+    margin-inline: auto; /* Center controls */
+}
+
+#signSearchInput,
+#signCategoryFilter {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: var(--br-sm);
+    font-size: var(--fs-base);
+    color: var(--clr-neutral-600);
+    background-color: var(--clr-white);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#signSearchInput:focus,
+#signCategoryFilter:focus {
+    border-color: var(--clr-primary-400);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+#signSearchInput {
+    flex-grow: 1; /* Allow search input to take more space */
+    min-width: 250px;
+}
+
+#signCategoryFilter {
+    min-width: 150px;
+    cursor: pointer;
+}
+
+
+.signs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Flexible grid for signs */
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.sign-card {
+    background-color: var(--clr-white);
+    border-radius: var(--br-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-md);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--clr-neutral-300);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    --flow-space: var(--space-sm); /* Spacing within card */
+    overflow: hidden; /* Ensure content stays within card */
+}
+
+.sign-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.sign-video-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    position: relative;
+    background-color: var(--clr-neutral-600);
+    border-radius: var(--br-sm);
+    overflow: hidden;
+    margin-bottom: var(--space-sm);
+}
+
+.sign-video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--br-sm);
+}
+
+.sign-video-container video[poster] {
+    object-fit: cover; /* Ensure poster image covers */
+}
+
+.sign-title {
+    font-size: var(--fs-h3);
+    color: var(--clr-primary-400);
+    margin-bottom: var(--space-xs);
+}
+
+.sign-description {
+    font-size: var(--fs-sm);
+    color: var(--clr-neutral-700);
+    margin-bottom: var(--space-md);
+    flex-grow: 1; /* Allow description to take available space */
+}
+
+.practice-btn {
+    margin-top: auto; /* Push button to the bottom */
+}
+
+#noSignsFound {
+    text-align: center;
+    font-size: var(--fs-lg);
+    color: var(--clr-neutral-700);
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    background-color: var(--clr-neutral-200);
+    border-radius: var(--br-md);
+    border: 1px solid var(--clr-neutral-300);
+}
+
+/* Utility Class */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design for Learn Signs Page */
+
+/* Tablet & Smaller Screens (max-width: 64em / 1024px) */
+@media (max-width: 64em) {
+    .signs-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Slightly smaller min-width */
+    }
+
+    .library-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #signSearchInput,
+    #signCategoryFilter {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+/* Mobile & Smaller Screens (max-width: 48em / 768px) */
+@media (max-width: 48em) {
+    .signs-grid {
+        grid-template-columns: 1fr; /* Single column for signs */
+        padding-inline: var(--space-sm);
+    }
+
+    .sign-card {
+        max-width: 400px; /* Limit card width */
+        margin-inline: auto; /* Center card */
+    }
+}

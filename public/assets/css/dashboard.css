@@ -1,0 +1,235 @@
+/* assets/css/dashboard.css */
+
+/* Hero Section Specific Styles */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: var(--space-xl) var(--space-lg); /* Top and bottom padding */
+    min-height: 85vh; /* Takes up most of the viewport height */
+    background: linear-gradient(to right, var(--clr-primary-400) 0%, #6dd5ed 100%); /* Blue gradient */
+    color: var(--clr-white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    --flow-space: var(--space-md); /* Default flow space for elements inside */
+}
+
+.hero-content-wrapper { /* Inner container for flex layout */
+    display: flex;
+    flex-direction: row; /* Default for desktop */
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.hero-text-content {
+    flex: 1;
+    max-width: 600px;
+    text-align: left; /* Align text to left */
+    z-index: 1; /* Ensure text is above illustration if it overlaps */
+}
+
+.hero-title {
+    font-size: var(--fs-h1);
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    color: var(--clr-white); /* Override main.css for hero section */
+}
+
+.hero-subtitle {
+    font-size: var(--fs-lg);
+    opacity: 0.9;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    --flow-space: var(--space-sm); /* Spacing for elements within hero-actions if they were blocks */
+}
+
+.hero-actions .btn {
+    padding: 1rem 2rem; /* More generous padding for hero buttons */
+    font-size: var(--fs-lg);
+    border-radius: var(--br-pill);
+}
+
+.hero-actions .btn-primary {
+    background-color: var(--clr-accent-400); /* Green for main CTA in hero */
+}
+
+.hero-actions .btn-primary:hover {
+    background-color: var(--clr-accent-500);
+}
+
+.hero-actions .btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--clr-white);
+    color: var(--clr-white);
+}
+
+.hero-actions .btn-secondary:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.hero-visual {
+    flex: 1;
+    max-width: 500px;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero-visual img {
+    width: 100%;
+    height: auto;
+    max-height: 500px; /* Prevent image from becoming too tall */
+    animation: float 3s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-10px); }
+}
+
+/* Features Overview Section Specific Styles */
+.features-overview-section {
+    --flow-space: var(--space-lg); /* Adjust flow space for this section */
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width for cards */
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.feature-card {
+    background-color: var(--clr-white);
+    border-radius: var(--br-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-lg);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--clr-neutral-300);
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;
+    --flow-space: var(--space-sm); /* Adjust flow space within card */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: var(--space-sm);
+}
+
+.feature-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
+.feature-title {
+    font-size: var(--fs-h3);
+    color: var(--clr-primary-400);
+}
+
+.feature-description {
+    font-size: var(--fs-sm);
+    color: var(--clr-neutral-700);
+    flex-grow: 1; /* Allows description to take available space */
+}
+
+/* Animation for features grid (JS will add 'animate-features' class) */
+.features-grid .feature-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.features-grid.animate-features .feature-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional: Add a delay for each card to animate sequentially */
+.features-grid.animate-features .feature-card:nth-child(1) { transition-delay: 0s; }
+.features-grid.animate-features .feature-card:nth-child(2) { transition-delay: 0.15s; }
+.features-grid.animate-features .feature-card:nth-child(3) { transition-delay: 0.3s; }
+
+
+/* Call to Action Section Specific Styles */
+.cta-section {
+    --flow-space: var(--space-md); /* Adjust flow space within CTA */
+}
+
+.cta-content {
+    padding-block: var(--space-lg);
+    max-width: 800px;
+    margin-inline: auto;
+}
+
+.cta-content .section-title {
+    font-size: 2.8rem; /* Slightly larger title for CTA */
+}
+
+/* --- Responsive Design (Media Queries) for Dashboard --- */
+
+/* Tablet & Smaller Screens (max-width: 1024px or 64em) */
+@media (max-width: 64em) {
+    .hero-content-wrapper {
+        flex-direction: column; /* Stack hero content vertically */
+        text-align: center;
+    }
+
+    .hero-text-content {
+        text-align: center; /* Center text for stacked layout */
+    }
+
+    .hero-actions {
+        justify-content: center; /* Center buttons */
+    }
+
+    .hero-visual {
+        max-width: 80%; /* Adjust size of illustration */
+        margin-top: var(--space-lg);
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr; /* Single column for features */
+        padding-inline: var(--space-sm); /* Add padding to grid itself */
+    }
+
+    .feature-card {
+        max-width: 400px; /* Limit width of cards when in single column */
+        margin-inline: auto; /* Center cards */
+    }
+}
+
+/* Mobile & Smaller Screens (max-width: 768px or 48em) */
+@media (max-width: 48em) {
+    .hero-actions .btn {
+        padding: 0.8rem 1.6rem;
+        font-size: var(--fs-base);
+    }
+}
+
+/* Smallest Mobile Screens (max-width: 480px or 30em) */
+@media (max-width: 30em) {
+    .hero-actions {
+        flex-direction: column; /* Stack hero buttons fully */
+        align-items: center;
+    }
+
+    .hero-actions .btn {
+        width: 90%;
+        max-width: 250px;
+    }
+}
