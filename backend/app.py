@@ -146,4 +146,3 @@ def health():
 if __name__ == "__main__":
     # Run on a different port than React (which runs on 3000)
     app.run(debug=True, port=5000, host='127.0.0.1')
-
